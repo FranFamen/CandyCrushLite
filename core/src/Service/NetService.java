@@ -28,7 +28,15 @@ public class NetService {
             }
         }
     }
-
+    public static BlockModel getBlockByID(int blockID) {
+        BlockModel blockModel = null;
+        for (int i = 0; i < BlockModel.getBlockList().size(); i++) {
+            if(getBlockList().get(i).getID()== blockID){
+                blockModel = (BlockModel) BlockModel.getBlockList().get(i);
+            }
+        }
+        return blockModel;
+    }
 
 
 

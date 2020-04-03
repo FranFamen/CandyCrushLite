@@ -1,35 +1,37 @@
 package Views;
-//Tutaj sa przechowane modele 2d ale info o nich jest pobrane z presentera
+
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import Main_Class.MyGdxGame;
+import Model.BlockModel;
 import Presenter.StagePresenter;
 import Service.NetService;
 
-public class StageView{
+public class StageView {
     StagePresenter presenter;
-    public static SpriteBatch batch;
+    private SpriteBatch batch;
     Texture img;
-
-
+    private static int[] xAndYCoordinates;
 
     public StageView() {
         presenter = new StagePresenter();
         batch = new SpriteBatch();
-
     }
 
     public void Draw(){
         DrawBackground();
         for (int i = 0; i < NetService.getBlockList().size(); i++) {
-            img = new Texture("Blocks\\Blocks_01_256x256_Alt_00_00"+ NetService.getBlockList().get(i).getColorID()+ ".png");
+            if(Gdx.input.isTouched()){
+                presenter.ChangeColorOfClickedBlock();
+            }
+            img = new Texture("Blocks\\Blocks_01_256x256_Alt_00_00" + NetService.getBlockList().get(i).getColorID() + ".png");
             DrawBlock(presenter.GetXLocation()[i], presenter.GetYLocation()[i]);
             img.dispose();
         }
-
     }
     public void DrawBackground(){
         Gdx.gl.glClearColor(1, 1, 1, 0);
@@ -45,5 +47,14 @@ public class StageView{
         img.dispose();
         batch.dispose();
     }
+
+    public static void SetXAndYClickCoordinates(float x, float y){
+        xAndYCoordinates = new int[2];
+        xAndYCoordinates[0] = (int)x;
+        xAndYCoordinates[1] = (int)y;
+
+    }
+
+
 
 }

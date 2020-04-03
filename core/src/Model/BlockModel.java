@@ -16,6 +16,7 @@ public class BlockModel {
     private int columnID;
     private int colorID;
     private int wallLength;
+    private boolean isBlockInMove;
     static ArrayList blockList;
     public BlockModel() {
     }
@@ -24,7 +25,8 @@ public class BlockModel {
             int ID,
             int rowID,
             int columnID,
-            int wallLength)
+            int wallLength
+            )
             {
                 this.ID = ID;
                 this.rowID = rowID;
@@ -32,18 +34,20 @@ public class BlockModel {
                 this.colorID = ColorLottery();
                 this.wallLength = wallLength;
             }
-    public void MoveBlock(){
 
-    }
-
-
-    private static int ColorLottery()
+    public static int ColorLottery()
     {
         Random random = new Random();
 
         return random.nextInt(6) + 1;
     }
+    public boolean isBlockInMove() {
+        return isBlockInMove;
+    }
 
+    public void setBlockInMove(boolean blockInMove) {
+        isBlockInMove = blockInMove;
+    }
     public int getID() {
         return ID;
     }
