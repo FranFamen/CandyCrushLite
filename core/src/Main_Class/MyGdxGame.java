@@ -23,7 +23,6 @@ public class MyGdxGame extends ApplicationAdapter implements GestureDetector.Ges
 	@Override
 	public void render () {
 		stageView.Draw();
-
 	}
 	
 	@Override
@@ -38,8 +37,7 @@ public class MyGdxGame extends ApplicationAdapter implements GestureDetector.Ges
 
 	@Override
 	public boolean tap(float x, float y, int count, int button) {
-
-		stageView.SetXAndYClickCoordinates(x,y);
+		//stageView.SetXAndYClickCoordinates(x,y);
 		return false;
 	}
 

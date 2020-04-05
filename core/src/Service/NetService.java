@@ -7,8 +7,9 @@ import Model.BlockModel;
 
 public class NetService {
     BlockModel block;
-    int NUMBER_OF_COLUMNS = 6;
-    int NUMBER_OF_ROWS = 10;
+
+    static int NUMBER_OF_COLUMNS = 6;
+    static int NUMBER_OF_ROWS = 10;
     static ArrayList blockList;
     static int wallLength;
     int blockNumber = 0;
@@ -76,6 +77,15 @@ public class NetService {
     public static int getWallLength() {
         return wallLength;
     }
+
+    public static int getNumberOfColumns() {
+        return NUMBER_OF_COLUMNS;
+    }
+
+    public static int getNumberOfRows() {
+        return NUMBER_OF_ROWS;
+    }
+
 
 
 }

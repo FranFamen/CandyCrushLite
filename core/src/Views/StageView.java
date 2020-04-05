@@ -25,8 +25,11 @@ public class StageView {
     public void Draw(){
         DrawBackground();
         for (int i = 0; i < NetService.getBlockList().size(); i++) {
-            if(Gdx.input.isTouched()){
-                presenter.ChangeColorOfClickedBlock();
+           // presenter.ChangeColorOfClickedBlock(800, 600);
+            if(Gdx.input.isTouched()) {
+                int x = Gdx.input.getX();
+                int y = Gdx.graphics.getHeight() - Gdx.input.getY();
+                presenter.ChangeColorOfClickedBlock(x, y);
             }
             img = new Texture("Blocks\\Blocks_01_256x256_Alt_00_00" + NetService.getBlockList().get(i).getColorID() + ".png");
             DrawBlock(presenter.GetXLocation()[i], presenter.GetYLocation()[i]);
@@ -47,14 +50,14 @@ public class StageView {
         img.dispose();
         batch.dispose();
     }
-
-    public static void SetXAndYClickCoordinates(float x, float y){
-        xAndYCoordinates = new int[2];
-        xAndYCoordinates[0] = (int)x;
-        xAndYCoordinates[1] = (int)y;
-
+    public boolean isScreenTouched(){
+        if(Gdx.input.isTouched()){
+            int x = Gdx.input.getX();
+            int y = Gdx.graphics.getHeight() - Gdx.input.getY();
+            presenter.ChangeColorOfClickedBlock(x,y);
+            return true;
+        }
+        return false;
     }
-
-
 
 }
