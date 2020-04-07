@@ -19,9 +19,13 @@ public class StagePresenter {
     {
         int[] blockXCoordinates = new int[NetService.getBlockList().size()];
         for(int i = 0; i < blockXCoordinates.length; i++){
-            if(!NetService.getBlockList().get(i).isBlockInMove()){
+            blockXCoordinates[i] = NetService.getBlockList().get(i).getColumnID() * wallLength;
+            /*if(!NetService.getBlockList().get(i).isBlockInMove()){
                 blockXCoordinates[i] = NetService.getBlockList().get(i).getColumnID() * wallLength;
-            }
+            }*/
+           /* else{
+                blockXCoordinates[i] = NetService.getBlockList().get(i).getColumnID() * wallLength + NetService.getBlockList().get(i).getDeltaX();
+            }*/
         }
         return blockXCoordinates;
     }
@@ -29,15 +33,16 @@ public class StagePresenter {
     {
         int[] blockYCoordinates = new int[NetService.getBlockList().size()];
         for(int i = 0; i < blockYCoordinates.length; i++){
-            if(!NetService.getBlockList().get(i).isBlockInMove()){
+            blockYCoordinates[i] = NetService.getBlockList().get(i).getRowID() * wallLength;
+
+            /*if(!NetService.getBlockList().get(i).isBlockInMove()){
                 blockYCoordinates[i] = NetService.getBlockList().get(i).getRowID() * wallLength;
-            }
+            }*/
 
         }
         return blockYCoordinates;
     }
     public int GetClickedBlockID(int x, int y){
-
         int xClickCoordinate = x;
         int yClickCoordinate = y;
         ArrayList<BlockModel> blockModels= NetService.getBlockList();

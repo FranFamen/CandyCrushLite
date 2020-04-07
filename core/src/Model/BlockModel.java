@@ -17,6 +17,8 @@ public class BlockModel {
     private int colorID;
     private int wallLength;
     private boolean isBlockInMove;
+    private int deltaX = 0;
+    private int deltaY = 0;
     static ArrayList blockList;
     public BlockModel() {
     }
@@ -81,6 +83,26 @@ public class BlockModel {
 
     public int getWallLength() {
         return wallLength;
+    }
+
+    public int getDeltaX() {
+        return deltaX;
+    }
+
+    public void setDeltaX(int deltaX) {
+        if(isBlockInMove){
+            this.deltaX = deltaX;
+        }
+    }
+
+    public int getDeltaY() {
+            return deltaY;
+    }
+
+    public void setDeltaY(int deltaY) {
+        if(isBlockInMove){
+            this.deltaY = deltaY;
+        }
     }
     public static void CreateBlockList(){
         blockList = new ArrayList();
